@@ -64,7 +64,17 @@ export const check = (comment_id) => {
 export const deleteComment = (comment_id) => {
   console.log("delete  comment", comment_id);
   return ncGamesApi.delete(`/comments/${comment_id}`);
-  //.then(() => {
-  //   return {};
-  //});
+};
+
+// this function can post comments for a review
+export const postComments = (review_id, username, comment) => {
+  const apiPath = `/reviews/${review_id}/comments`;
+  console.log("apiPath", apiPath);
+
+  return ncGamesApi
+    .post(apiPath, { username, body: comment })
+
+    .then((res) => {
+      return res.data.comment;
+    });
 };

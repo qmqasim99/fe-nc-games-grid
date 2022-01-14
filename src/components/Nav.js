@@ -23,7 +23,7 @@ const Nav = ({ category, setCategory }) => {
         </Link>
         {categories.map((cat) => {
           return (
-            <Link to={`/reviews/category/${cat.slug}`}>
+            <Link key={cat.slug} to={`/reviews/category/${cat.slug}`}>
               <li key={cat.slug} value={cat.slug}>
                 {cat.slug}
               </li>
