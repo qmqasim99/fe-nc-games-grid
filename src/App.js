@@ -6,32 +6,23 @@ import Nav from "./components/Nav";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Missing from "./Missing";
+import Review from "./components/Review";
 
 function App() {
-  const [category, setCategory] = useState("all");
-
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Nav category={category} setCategory={setCategory} />
+        <Nav />
         <Routes>
-          <Route path="/" element={<ReviewsList category={category} />} />
-          <Route
-            path="/reviews"
-            element={<ReviewsList category={category} />}
-          />
-          <Route
-            path="/reviews/category"
-            element={<ReviewsList category={category} />}
-          />
+          <Route path="/" element={<ReviewsList />} />
+          <Route path="/reviews" element={<ReviewsList />} />
+          <Route path="/reviews/category" element={<ReviewsList />} />
           <Route
             path="/reviews/category/:category_id"
-            element={
-              <ReviewsList category={category} setCategory={setCategory} />
-            }
-          />
-
+            element={<ReviewsList />}
+          />{" "}
+          <Route path="/reviews/:review_id" element={<Review />} />
           <Route path="*" element={<Missing />} />
         </Routes>
         <Footer />

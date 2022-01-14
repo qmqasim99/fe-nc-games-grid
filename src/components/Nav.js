@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import RequireLogin from "./RequireLogin";
 
 const Nav = ({ category, setCategory }) => {
   const navigate = useNavigate;
@@ -14,27 +15,23 @@ const Nav = ({ category, setCategory }) => {
     });
   }, []);
 
-  const handleSubmit = (event) => {
-    setCategory(event.target.value);
-    navigate("/");
-  };
   return (
     <nav>
-      <form onChange={(event) => handleSubmit(event)}>
-        <label for="categories">Choose a category:</label>
-        <select id="categories" name="categories">
-          <option key="all" value="all">
-            All
-          </option>
-          {categories.map((cat) => {
-            return (
-              <option key={cat.slug} value={cat.slug}>
+      <ul>
+        <Link to="/reviews">
+          <li>All reviews</li>
+        </Link>
+        {categories.map((cat) => {
+          return (
+            <Link to={`/reviews/category/${cat.slug}`}>
+              <li key={cat.slug} value={cat.slug}>
                 {cat.slug}
-              </option>
-            );
-          })}
-        </select>
-      </form>
+              </li>
+            </Link>
+          );
+        })}
+      </ul>
+      <RequireLogin />
     </nav>
   );
 };
