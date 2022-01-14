@@ -41,21 +41,13 @@ const Comments = ({ review_id }) => {
   };
 
   const handleOnSubmit = (username, newComment) => {
-    console.log(
-      "Review ID: ",
-      review_id,
-      "Username: ",
-      username,
-      "new comment value: ",
-      newComment
-    );
-    let allComments = [];
+    //let allComments = [];
     postComments(review_id, user.username, newComment)
       .then((data) => {
         console.log("returned posted comment data", data);
         setErrorMessage("");
 
-        allComments = [data, ...comments];
+        const allComments = [data, ...comments];
         console.log("All COmments", allComments);
         setComments(allComments);
 
@@ -72,7 +64,6 @@ const Comments = ({ review_id }) => {
         setIsError(true);
         setErrorMessage(error.message);
       });
-    console.log("aall commnets outside: ", allComments);
   };
 
   return (

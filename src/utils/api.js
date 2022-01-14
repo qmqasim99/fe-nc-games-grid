@@ -23,6 +23,34 @@ export const getReviews = (category) => {
   });
 };
 
+// get sorted reviews
+export const getSortedReviews = (
+  category_id,
+  sort = "created_at",
+  sortOrder = "desc"
+) => {
+  let apiPath = "/reviews";
+
+  // if (sort) {
+  //   apiPath += `?sort_by=${sort}`;
+  // }
+  console.log("apipath in sorted", apiPath);
+
+  const params = {
+    params: { sort_by: sort, order: sortOrder },
+  };
+
+  if (category_id !== undefined) {
+    params.params.category = category_id;
+  }
+
+  console.log("params", params);
+  return ncGamesApi.get(apiPath, params).then((res) => {
+    console.log("in api sorted :", res.data.reviews);
+    return res.data.reviews;
+  });
+};
+
 export const getReview = (review_id) => {
   return ncGamesApi.get("/reviews/" + review_id).then((res) => {
     return res.data.review;

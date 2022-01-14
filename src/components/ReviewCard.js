@@ -7,6 +7,7 @@ const ReviewCard = ({ review }) => {
         <li key={review.review_id}>
           <p>Title: {review.title}</p>
           <p>Owner: {review.owner}</p>
+          <p>No. of comments: {review.comment_count}</p>
 
           <img
             className="review-list-image"
