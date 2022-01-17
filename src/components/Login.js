@@ -42,16 +42,16 @@ const Login = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
+      <form onSubmit={handleSubmit} className="user-login-section">
+        <label className="user-login-section-form">
+          Username:{" "}
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
-        <button>Login</button>
+        <button className="user-login-section-form">Login</button>
       </form>
 
       {isError && (

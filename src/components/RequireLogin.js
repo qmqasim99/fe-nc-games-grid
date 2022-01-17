@@ -7,10 +7,11 @@ const RequireLogin = () => {
 
   console.log("in require login: isLoggedIn", isLoggedIn);
   return user.username ? (
-    <>
-      <p>Hello, {user.username}</p>
-      <button onClick={logout}>Logout </button>{" "}
-    </>
+    <div className="user-logged-section ">
+      <p>
+        Hello, {user.username} <button onClick={logout}>Logout </button>{" "}
+      </p>
+    </div>
   ) : (
     <Login />
   );

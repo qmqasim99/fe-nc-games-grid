@@ -5,15 +5,22 @@ const ReviewCard = ({ review }) => {
     <div className="review-card">
       <Link to={`/reviews/${review.review_id}`}>
         <li key={review.review_id}>
-          <p>Title: {review.title}</p>
-          <p>Owner: {review.owner}</p>
-          <p>No. of comments: {review.comment_count}</p>
-
           <img
             className="review-list-image"
             src={review.review_img_url}
             alt={review.title}
           />
+          <p>
+            {" "}
+            <h3>Title:</h3> {review.title}
+          </p>
+          <p>
+            <h3>Owner:</h3> {review.owner}
+          </p>
+          <p>
+            <h3>No. of comments: </h3>
+            {review.comment_count}
+          </p>
         </li>
       </Link>
     </div>

@@ -60,12 +60,12 @@ const ReviewsList = () => {
       ) : (
         <>
           {category_id ? (
-            <h1>Reviews for category: {category_id}</h1>
+            <h2>Reviews for category: {category_id}</h2>
           ) : (
-            <h1>Reviews for all categories:</h1>
+            <h2>Reviews for all categories:</h2>
           )}
           <SortReviewsMenu handleSortSubmit={handleSortSubmit} />
-          <ul>
+          <ul className="review-card-wrapper ">
             {reviews.map((review) => {
               return <ReviewCard key={review.review_id} review={review} />;
             })}

@@ -40,13 +40,16 @@ const Review = () => {
       ) : isLoading ? (
         <LoadingMessage />
       ) : (
-        <>
+        <div className="review-wrapper">
           <ul>
             <li key={review.review_id}>
-              <p>Title: {review.title}</p>
-              <p>Owner: {review.owner}</p>
+              <h2>{review.title}</h2>
               <p>
-                Category:{" "}
+                <h3>Owner: </h3>
+                {review.owner}
+              </p>
+              <p>
+                <h3>Category: </h3>
                 <Link to={`/reviews/category/${review.category}`}>
                   {review.category}
                 </Link>
@@ -57,19 +60,25 @@ const Review = () => {
                 alt={review.title}
               />
 
-              <p>Review: </p>
+              <p>
+                <h3>Review: </h3>
+              </p>
               <p>{review.review_body}</p>
-              <p>Created at: {convertApiDate(review.created_at)}</p>
+              <p>
+                <h3>Created at: </h3>
+                {convertApiDate(review.created_at)}
+              </p>
               <Votes
                 votingPath={"reviews"}
                 id={review.review_id}
                 currentVotes={review.votes}
               />
-              <p>Comment Count: {review.comment_count}</p>
+              <p></p>
+              <h3>Comment Count: {review.comment_count}</h3>
               <Comments review_id={review.review_id} />
             </li>
           </ul>
-        </>
+        </div>
       )}
     </main>
   );

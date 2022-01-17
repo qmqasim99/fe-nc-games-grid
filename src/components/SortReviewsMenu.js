@@ -21,9 +21,11 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="sort-wrapper">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="sort">Sort reviews by:</label>
+        <label htmlFor="sort">
+          <h3>Sort reviews by:</h3>
+        </label>{" "}
         <select
           id="sort"
           name="sort"
@@ -57,7 +59,7 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
           <option key="votes" value="votes">
             No. of votes
           </option>
-        </select>
+        </select>{" "}
         <label>
           <input
             type="radio"
@@ -66,8 +68,7 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
             onChange={onOrderValueChange}
           />
           Descending
-        </label>
-
+        </label>{" "}
         <label>
           <input
             type="radio"
@@ -76,7 +77,7 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
             onChange={onOrderValueChange}
           />
           Ascending
-        </label>
+        </label>{" "}
         <button>Go</button>
       </form>
     </div>

@@ -17,17 +17,18 @@ const Nav = ({ category, setCategory }) => {
 
   return (
     <nav>
-      <ul>
-        <Link to="/reviews">
-          <li>All reviews</li>
-        </Link>
+      <ul className="nav-menu-wrapper">
+        <li className="categoryLinks">
+          <Link to="/reviews">All reviews</Link>
+        </li>
+
         {categories.map((cat) => {
           return (
-            <Link key={cat.slug} to={`/reviews/category/${cat.slug}`}>
-              <li key={cat.slug} value={cat.slug}>
+            <li className="categoryLinks" key={cat.slug} value={cat.slug}>
+              <Link key={cat.slug} to={`/reviews/category/${cat.slug}`}>
                 {cat.slug}
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>
