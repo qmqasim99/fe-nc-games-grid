@@ -6,8 +6,6 @@ const getDate = (apiDate) => {
   const d = new Date("2021-01-18T10:01:42.151Z");
   const month = parseInt(d.getUTCMonth()) + 1;
   const newDate = `${d.getUTCDate()}-${month}-${d.getUTCFullYear()}`;
-
-  console.log("year ", newDate);
 };
 
 getDate();

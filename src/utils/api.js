@@ -31,11 +31,6 @@ export const getSortedReviews = (
 ) => {
   let apiPath = "/reviews";
 
-  // if (sort) {
-  //   apiPath += `?sort_by=${sort}`;
-  // }
-  console.log("apipath in sorted", apiPath);
-
   const params = {
     params: { sort_by: sort, order: sortOrder },
   };
@@ -44,9 +39,7 @@ export const getSortedReviews = (
     params.params.category = category_id;
   }
 
-  console.log("params", params);
   return ncGamesApi.get(apiPath, params).then((res) => {
-    console.log("in api sorted :", res.data.reviews);
     return res.data.reviews;
   });
 };
@@ -66,13 +59,11 @@ export const getReviewComments = (review_id) => {
 // this function can update votes for reviews / comments
 export const patchVotes = (votingPath, id, inc_votes) => {
   const apiPath = `/${votingPath}/${id}`;
-  console.log("apiPath", apiPath);
 
   return ncGamesApi
     .patch(apiPath, { inc_votes })
 
     .then((res) => {
-      console.log("In patchVotes ", res.data);
       return res.data;
     });
 };
@@ -84,20 +75,14 @@ export const getUser = (username) => {
   });
 };
 
-export const check = (comment_id) => {
-  console.log("check id", comment_id);
-};
-
 // delete a comment
 export const deleteComment = (comment_id) => {
-  console.log("delete  comment", comment_id);
   return ncGamesApi.delete(`/comments/${comment_id}`);
 };
 
 // this function can post comments for a review
 export const postComments = (review_id, username, comment) => {
   const apiPath = `/reviews/${review_id}/comments`;
-  console.log("apiPath", apiPath);
 
   return ncGamesApi
     .post(apiPath, { username, body: comment })

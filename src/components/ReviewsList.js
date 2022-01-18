@@ -9,8 +9,6 @@ import SortReviewsMenu from "./SortReviewsMenu";
 const ReviewsList = () => {
   const { category_id } = useParams();
 
-  console.log("catching ay params; ", category_id);
-
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -22,7 +20,6 @@ const ReviewsList = () => {
     getReviews(category_id)
       .then((data) => {
         setIsLoading(false);
-        console.log("in Reviews List res:", data);
         setReviews(data);
       })
       .catch((error) => {
@@ -33,16 +30,12 @@ const ReviewsList = () => {
   }, [category_id]);
 
   const handleSortSubmit = (sort, sortOrder) => {
-    console.log("in handleSortSubmit: ", sort);
-
     getSortedReviews(category_id, sort, sortOrder)
       .then((data) => {
         setIsLoading(false);
-        console.log("in SORTED Reviews List:", data);
         setReviews(data);
       })
       .catch((error) => {
-        console.log("in error:", error.response.data.msgr);
         setIsError(true);
         setErrorMessage(error.response.data.msg);
         setIsLoading(true);

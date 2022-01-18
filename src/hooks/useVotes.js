@@ -10,7 +10,7 @@ export const useVotes = (path, id, startCount = 0) => {
   const increaseVote = () => {
     setIsError(false);
     setVotes((currCount) => currCount + 1);
-    console.log("New Count", votes);
+  
     patchVotes(votingPath, votingId, 1).catch(() => {
       setIsError(true);
       setVotes((currCount) => currCount - 1);

@@ -10,7 +10,6 @@ const Nav = ({ category, setCategory }) => {
 
   useEffect(() => {
     getCategories().then((data) => {
-      console.log("in Categories List res:", data);
       setCategories(data);
     });
   }, []);

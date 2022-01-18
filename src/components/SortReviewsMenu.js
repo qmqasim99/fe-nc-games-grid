@@ -6,12 +6,10 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
   const [sortOrder, setSortOrder] = useState("desc");
 
   const onSortValueChange = (event) => {
-    console.log("sort ", event.target.value);
     setSort(event.target.value);
   };
 
   const onOrderValueChange = (event) => {
-    console.log("sort order", event.target.value);
     setSortOrder(event.target.value);
   };
 

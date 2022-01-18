@@ -10,23 +10,11 @@ const Login = () => {
   const { user, setUser, login, logout, isLoggedIn, setIsLoggedIn } =
     useContext(UserContext);
 
-  console.log("user in form", user.username);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setUser({ username: username });
-    // console.log("in handle submit ", username);
 
-    setIsError(false);
-
-    //login();
-    //setUsername("");
-    // setIsLoggedIn(true);
-
-    // jessjelly
     getUser(username)
       .then((data) => {
-        console.log("user data in Context ", data);
         setUser({});
         setUser(data);
         setIsLoggedIn(true);

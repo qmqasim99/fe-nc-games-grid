@@ -20,7 +20,6 @@ const Review = () => {
     getReview(review_id)
       .then((data) => {
         setIsLoading(false);
-        console.log("data ", data);
         setReview(data);
       })
       .catch((error) => {
@@ -30,7 +29,6 @@ const Review = () => {
       });
   }, [review_id]);
 
-  console.log("review ", review);
   return (
     <main>
       {isError ? (
@@ -44,30 +42,24 @@ const Review = () => {
           <ul>
             <li key={review.review_id}>
               <h2>{review.title}</h2>
+              <h3>Owner: </h3>
+              <p>{review.owner}</p>
+              <h3>Category: </h3>
+              <Link to={`/reviews/category/${review.category}`}>
+                {review.category}
+              </Link>
               <p>
-                <h3>Owner: </h3>
-                {review.owner}
+                <img
+                  className="review-list-image"
+                  src={review.review_img_url}
+                  alt={review.title}
+                />
               </p>
-              <p>
-                <h3>Category: </h3>
-                <Link to={`/reviews/category/${review.category}`}>
-                  {review.category}
-                </Link>
-              </p>
-              <img
-                className="review-list-image"
-                src={review.review_img_url}
-                alt={review.title}
-              />
-
-              <p>
-                <h3>Review: </h3>
-              </p>
+              <h3>Review: </h3>
+              <p></p>
               <p>{review.review_body}</p>
-              <p>
-                <h3>Created at: </h3>
-                {convertApiDate(review.created_at)}
-              </p>
+              <h3>Created at: </h3>
+              <p>{convertApiDate(review.created_at)}</p>
               <Votes
                 votingPath={"reviews"}
                 id={review.review_id}

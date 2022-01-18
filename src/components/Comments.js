@@ -19,7 +19,6 @@ const Comments = ({ review_id }) => {
     getReviewComments(review_id)
       .then((data) => {
         setIsLoading(false);
-        console.log("in Comments List res:", data);
         setComments(data);
       })
       .catch((error) => {
@@ -31,7 +30,6 @@ const Comments = ({ review_id }) => {
 
   const handleDeleteComment = (e) => {
     const id = parseInt(e.target.value);
-    console.log("delete button invoked", id);
     setComments(comments.filter((comment) => comment.comment_id !== id));
 
     deleteComment(id).catch((error) => {
@@ -44,21 +42,10 @@ const Comments = ({ review_id }) => {
     //let allComments = [];
     postComments(review_id, user.username, newComment)
       .then((data) => {
-        console.log("returned posted comment data", data);
         setErrorMessage("");
 
         const allComments = [data, ...comments];
-        console.log("All COmments", allComments);
         setComments(allComments);
-
-        // setComments((currState) => {
-        //   console.log("currstate is ", currState);
-        //   console.log("data.comment is ", data);
-        //   const  tempObj = [...currState, data];
-
-        //   console.log("temp Obj ", tempObj);
-        //   return tempObj;
-        // });
       })
       .catch((error) => {
         setIsError(true);

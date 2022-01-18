@@ -9,25 +9,6 @@ const PostComment = ({ handleOnSubmit }) => {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsError(false);
-
-  //   postComments(review_id, user.username, newComment)
-  //     .then((data) => {
-  //       console.log("returned posted comment data", data);
-
-  //       // setUser(data);
-  //       setErrorMessage("");
-  //       setNewComment("");
-  //     })
-  //     .catch((error) => {
-  //       setIsError(true);
-  //       setNewComment(newComment);
-  //       setErrorMessage(error.response.data.msg);
-  //     });
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newComment) {
