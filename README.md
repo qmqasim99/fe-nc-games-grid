@@ -7,6 +7,8 @@ This app also allows users to vote on the Reviews and Comments and allows them t
 
 This App is developed using React.js, Axios and REST APIs provided by Northcoders
 
+A live version of the App is available here [FE-NC-Games](https://qm-fe-nc-games.netlify.app).
+
 ## Running this code
 
 In the project directory, you can run:
@@ -21,7 +23,7 @@ Run the following command in your terminal:
 
 Move into repository directory and run `npm install` to install all the dependencies.
 
-### Running teh app
+### Running the app
 
 To run the app in the development mode, run `npm start` in the terminal.
 
