@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { getUser } from "../utils/api";
+import { useContext, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { getUser } from '../utils/api';
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { user, setUser, login, logout, isLoggedIn, setIsLoggedIn } =
     useContext(UserContext);
@@ -18,7 +18,7 @@ const Login = () => {
         setUser({});
         setUser(data);
         setIsLoggedIn(true);
-        setErrorMessage("");
+        setErrorMessage('');
       })
       .catch((error) => {
         setIsError(true);
@@ -31,15 +31,14 @@ const Login = () => {
   return (
     <>
       <form onSubmit={handleSubmit} className="user-login-section">
-        <label className="user-login-section-form">
-          Username:{" "}
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <button className="user-login-section-form">Login</button>
+        <input
+          placeholder="Username"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <button className="green-button">Login</button>
       </form>
 
       {isError && (

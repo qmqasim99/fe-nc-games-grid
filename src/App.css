@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 .App-header {
   background-color: #282c34;
@@ -28,7 +28,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -42,26 +42,32 @@ header {
 }
 
 .nav-menu-wrapper {
-  background-color: hsla(202, 80%, 56%, 0.733);
+  background-color: #0c87eb;
   display: flex;
   flex-direction: column;
 }
 
 .categoryLinks {
-  background-color: rgba(43, 194, 161, 0.733);
   margin: 0.2em;
   padding: 0.2em;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-weight: 700;
+  font-size: large;
 }
 
-@media screen and (min-width: 600px) {
+.categoryLinks a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 800px) {
   .nav-menu-wrapper {
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
+    align-items: center;
   }
 
   .categoryLinks {
@@ -74,13 +80,48 @@ ul {
 }
 
 .categoryLinks:hover {
-  border: 1px solid red;
+  background-color: #4daaf6;
 }
 
 .user-login-section {
   background-color: rgb(248, 100, 74);
   text-align: center;
   padding: 1%;
+}
+
+input[type='text'] {
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.green-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.red-button {
+  background-color: #be444a; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .user-login-section-form {
@@ -97,37 +138,49 @@ ul {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  background-color: honeydew;
+  /* background-color: #79bff8; */
+  background-color: #fdfdfd;
   align-items: flex-start;
   padding-bottom: 2em;
 }
 
 .review-card {
-  background-color: rgb(248, 246, 227);
-  border: 1px solid green;
+  background-color: rgb(252, 252, 252);
+  border: 1px solid rgb(66, 102, 155);
   border-radius: 5px;
-  max-width: 300px;
+  width: 300px;
+  height: 320px;
   margin: 1em;
   text-align: center;
   padding: 1em;
   font-size: small;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: dimgrey;
 }
 
 .review-card h3 {
   display: inline;
-  font-size: small;
+  font-size: medium;
   font-weight: 700;
+  color: dimgray;
+}
+
+.review-card p {
+  font-size: small;
+  font-weight: 500;
+  color: dimgrey;
 }
 
 .review-card:hover {
-  box-shadow: 0 0 11px hsla(209, 84%, 47%, 0.705);
+  box-shadow: 0 0 25px hsla(0, 0%, 99%, 0.705);
+  transform: scale(1.1);
 }
 
 .review-list-image {
   border-radius: 8px;
-  border: 3px solid grey;
-  max-width: 40%;
-  height: auto;
+
+  max-width: 100%;
+  max-height: 200px;
 }
 
 .error-message-card {
@@ -140,6 +193,28 @@ ul {
 
 .review-wrapper {
   padding: 1em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  /* border: 1px solid rgb(66, 102, 155);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  /* background-color: #79bff8; */
+  background-color: #fdfdfd;
+  align-items: flex-start;
+}
+
+.review {
+  background-color: rgb(252, 252, 252);
+
+  margin: 1em;
+  font-size: small;
+  color: dimgrey;
+}
+
+.main-review {
+  margin: 1em;
+  padding: 1em;
+  font-size: medium;
 }
 
 .review-wrapper h3 {
@@ -152,6 +227,23 @@ ul {
   margin-bottom: 1em;
 }
 
+.comment-card {
+  background-color: rgb(252, 252, 252);
+  border: 1px solid rgb(66, 102, 155);
+  border-radius: 5px;
+  width: 300px;
+  height: auto;
+  margin: 1em;
+  text-align: left;
+  padding: 1em;
+  font-size: small;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: dimgrey;
+}
+
+.review-wrapper p {
+  margin-bottom: 1em;
+}
 .sort-wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -165,5 +257,16 @@ ul {
 }
 footer {
   padding: 2em;
-  background-color: lightcyan;
+  background-color: rgb(121, 177, 230);
+}
+
+.avatar {
+  vertical-align: middle;
+  margin: 3px;
+}
+.avatar-img {
+  width: 7%;
+  height: auto;
+  vertical-align: middle;
+  margin: 3px;
 }

@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getReview } from "../utils/api";
-import { convertApiDate, getApiDate } from "../utils/dates";
-import Comments from "./Comments";
-import ErrorMessage from "./ErrorMessage";
-import LoadingMessage from "./LoadingMessage";
-import Votes from "./Votes";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { getReview } from '../utils/api';
+import { convertApiDate, getApiDate } from '../utils/dates';
+import Comments from './Comments';
+import ErrorMessage from './ErrorMessage';
+import LoadingMessage from './LoadingMessage';
+import Votes from './Votes';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Review = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,16 +40,25 @@ const Review = () => {
       ) : isLoading ? (
         <LoadingMessage />
       ) : (
-        <div className="review-wrapper">
-          <ul>
-            <li key={review.review_id}>
+        <>
+          <div className="review-wrapper">
+            <div className="review">
               <h2>{review.title}</h2>
-              <h3>Owner: </h3>
-              <p>{review.owner}</p>
-              <h3>Category: </h3>
-              <Link to={`/reviews/category/${review.category}`}>
-                {review.category}
-              </Link>
+
+              <p>
+                <AccountCircleIcon className="avatar" /> {review.owner} {'   '}
+                <EventNoteIcon className="avatar" />
+                {convertApiDate(review.created_at)}
+              </p>
+
+              <p>
+                Category:{' '}
+                <Link to={`/reviews/category/${review.category}`}>
+                  {review.category}
+                </Link>
+              </p>
+            </div>
+            <div className="review">
               <p>
                 <img
                   className="review-list-image"
@@ -55,22 +66,24 @@ const Review = () => {
                   alt={review.title}
                 />
               </p>
-              <h3>Review: </h3>
-              <p></p>
-              <p>{review.review_body}</p>
-              <h3>Created at: </h3>
-              <p>{convertApiDate(review.created_at)}</p>
+            </div>
+          </div>
+          <div className="main-review">
+            <h3>Review: </h3>
+            <p></p>
+            <p style={{ textAlign: 'justify' }}>{review.review_body}</p>
+            <div className="main-review">
               <Votes
-                votingPath={"reviews"}
+                votingPath={'reviews'}
                 id={review.review_id}
                 currentVotes={review.votes}
               />
-              <p></p>
-              <h3>Comment Count: {review.comment_count}</h3>
-              <Comments review_id={review.review_id} />
-            </li>
-          </ul>
-        </div>
+            </div>
+            <p></p>
+            <h3>Comment Count: {review.comment_count}</h3>
+            <Comments review_id={review.review_id} />
+          </div>
+        </>
       )}
     </main>
   );

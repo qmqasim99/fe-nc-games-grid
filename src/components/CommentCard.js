@@ -1,27 +1,46 @@
-import { Link } from "react-router-dom";
-import { convertApiDate } from "../utils/dates";
-import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
-import Votes from "./Votes";
+import { Link } from 'react-router-dom';
+import { convertApiDate } from '../utils/dates';
+import { useContext, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import Votes from './Votes';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
 
 const CommentCard = ({ comment, deleteComment }) => {
   const { user } = useContext(UserContext);
 
   return (
-    <li className="review-card" key={comment.comment_id}>
-      <p>Author: {comment.author}</p>
-
-      <p>Comment: {comment.body}</p>
+    <li className="comment-card" key={comment.comment_id}>
+      <p>
+        <AccountCircleIcon
+          style={{ verticalAlign: 'middle', marginLeft: '0px' }}
+        />{' '}
+        {comment.author}
+      </p>
+      <p>{comment.body}</p>
       <Votes
-        votingPath={"comments"}
+        votingPath={'comments'}
         id={comment.comment_id}
         currentVotes={comment.votes}
       />
-      <p>Posted on: {convertApiDate(comment.created_at)}</p>
+      <p>
+        {' '}
+        <EventNoteIcon className="avatar" />
+        {convertApiDate(comment.created_at)}
+      </p>
       {user.username === comment.author ? (
-        <button value={comment.comment_id} onClick={(e) => deleteComment(e)}>
+        <Button
+          color="error"
+          value={comment.comment_id}
+          onClick={(e) => deleteComment(e)}
+          size="small"
+          variant="contained"
+          startIcon={<DeleteIcon />}
+        >
           Delete this comment
-        </button>
+        </Button>
       ) : null}
     </li>
   );

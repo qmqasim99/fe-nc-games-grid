@@ -1,19 +1,20 @@
-import { useState, useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { postComments } from "../utils/api";
-import ErrorMessage from "./ErrorMessage";
+import { useState, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { postComments } from '../utils/api';
+import ErrorMessage from './ErrorMessage';
+import TextField from '@mui/material/TextField';
 
 const PostComment = ({ handleOnSubmit }) => {
   const { user } = useContext(UserContext);
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState('');
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newComment) {
       setIsError(true);
-      setErrorMessage("Please enter your coments");
+      setErrorMessage('Please enter your coments');
     } else {
       try {
         setIsError(false);
@@ -21,8 +22,8 @@ const PostComment = ({ handleOnSubmit }) => {
         handleOnSubmit(user.username, newComment);
 
         // setUser(data);
-        setErrorMessage("");
-        setNewComment("");
+        setErrorMessage('');
+        setNewComment('');
       } catch (error) {
         setIsError(true);
         setNewComment(newComment);
@@ -35,13 +36,15 @@ const PostComment = ({ handleOnSubmit }) => {
     <>
       <form onSubmit={handleSubmit}>
         <label>Post new comments: </label>
+
         <input
+          style="width: 300px"
           type="textarea"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
         />
 
-        <button>Post it</button>
+        <button className="green-button">Post it</button>
       </form>
 
       {isError && <ErrorMessage msg={errorMessage} />}

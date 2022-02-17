@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const ReviewCard = ({ review }) => {
   return (
@@ -11,15 +13,17 @@ const ReviewCard = ({ review }) => {
             alt={review.title}
           />
           <p>
-            {" "}
-            <h3>Title:</h3> {review.title}
+            <h3>{review.title}</h3>
           </p>
           <p>
-            <h3>Owner:</h3> {review.owner}
+            <AccountCircleIcon
+              style={{ verticalAlign: 'middle', margin: '3px' }}
+            />{' '}
+            {review.owner}
           </p>
           <p>
-            <h3>No. of comments: </h3>
-            {review.comment_count}
+            <CommentIcon style={{ verticalAlign: 'middle', margin: '3px' }} />
+            {review.comment_count} Comments
           </p>
         </li>
       </Link>

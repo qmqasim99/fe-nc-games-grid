@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const SortReviewsMenu = ({ handleSortSubmit }) => {
-  const [sort, setSort] = useState("created_at");
+  const [sort, setSort] = useState('created_at');
 
-  const [sortOrder, setSortOrder] = useState("desc");
+  const [sortOrder, setSortOrder] = useState('desc');
 
   const onSortValueChange = (event) => {
     setSort(event.target.value);
@@ -23,7 +23,7 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="sort">
           <h3>Sort reviews by:</h3>
-        </label>{" "}
+        </label>{' '}
         <select
           id="sort"
           name="sort"
@@ -57,26 +57,26 @@ const SortReviewsMenu = ({ handleSortSubmit }) => {
           <option key="votes" value="votes">
             No. of votes
           </option>
-        </select>{" "}
+        </select>{' '}
         <label>
           <input
             type="radio"
             value="desc"
-            checked={sortOrder === "desc"}
+            checked={sortOrder === 'desc'}
             onChange={onOrderValueChange}
           />
           Descending
-        </label>{" "}
+        </label>{' '}
         <label>
           <input
             type="radio"
             value="asc"
-            checked={sortOrder === "asc"}
+            checked={sortOrder === 'asc'}
             onChange={onOrderValueChange}
           />
           Ascending
-        </label>{" "}
-        <button>Go</button>
+        </label>{' '}
+        <button className="green-button">Go</button>
       </form>
     </div>
   );

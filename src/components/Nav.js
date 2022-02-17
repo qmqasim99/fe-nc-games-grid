@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getCategories } from "../utils/api";
-import { useNavigate } from "react-router-dom";
-import RequireLogin from "./RequireLogin";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getCategories } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
+import RequireLogin from './RequireLogin';
 
 const Nav = ({ category, setCategory }) => {
   const navigate = useNavigate;
@@ -30,8 +30,8 @@ const Nav = ({ category, setCategory }) => {
             </li>
           );
         })}
+        <RequireLogin />
       </ul>
-      <RequireLogin />
     </nav>
   );
 };

@@ -1,17 +1,17 @@
-import { useEffect, useState, useContext } from "react";
-import { deleteComment, getReviewComments, postComments } from "../utils/api";
-import CommentCard from "./CommentCard";
-import ErrorMessage from "./ErrorMessage";
-import LoadingMessage from "./LoadingMessage";
-import PostComment from "./PostComment";
-import { UserContext } from "../contexts/UserContext";
+import { useEffect, useState, useContext } from 'react';
+import { deleteComment, getReviewComments, postComments } from '../utils/api';
+import CommentCard from './CommentCard';
+import ErrorMessage from './ErrorMessage';
+import LoadingMessage from './LoadingMessage';
+import PostComment from './PostComment';
+import { UserContext } from '../contexts/UserContext';
 
 const Comments = ({ review_id }) => {
   const { user } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,6 +19,7 @@ const Comments = ({ review_id }) => {
     getReviewComments(review_id)
       .then((data) => {
         setIsLoading(false);
+        console.log(data);
         setComments(data);
       })
       .catch((error) => {
@@ -42,7 +43,7 @@ const Comments = ({ review_id }) => {
     //let allComments = [];
     postComments(review_id, user.username, newComment)
       .then((data) => {
-        setErrorMessage("");
+        setErrorMessage('');
 
         const allComments = [data, ...comments];
         setComments(allComments);
@@ -54,7 +55,7 @@ const Comments = ({ review_id }) => {
   };
 
   return (
-    <section className="review-card">
+    <section>
       {isError ? (
         <>
           <ErrorMessage msg={errorMessage} />
@@ -63,9 +64,8 @@ const Comments = ({ review_id }) => {
         <LoadingMessage />
       ) : (
         <>
-          <h2>Comments</h2>
           <PostComment handleOnSubmit={handleOnSubmit} />
-          <ul>
+          <ul className="review-card-wrapper">
             {comments.map((comment) => {
               return (
                 <CommentCard
