@@ -19,13 +19,13 @@ const Comments = ({ review_id }) => {
     getReviewComments(review_id)
       .then((data) => {
         setIsLoading(false);
-        console.log(data);
+
         setComments(data);
       })
       .catch((error) => {
         setIsError(true);
-        setErrorMessage(error.response.data.msg);
         setIsLoading(true);
+        setErrorMessage(error.response.data.msg);
       });
   }, [review_id]);
 
@@ -63,7 +63,7 @@ const Comments = ({ review_id }) => {
       ) : isLoading ? (
         <LoadingMessage />
       ) : (
-        <>
+        <section>
           <PostComment handleOnSubmit={handleOnSubmit} />
           <ul className="review-card-wrapper">
             {comments.map((comment) => {
@@ -76,7 +76,7 @@ const Comments = ({ review_id }) => {
               );
             })}
           </ul>
-        </>
+        </section>
       )}
     </section>
   );

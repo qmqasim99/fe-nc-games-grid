@@ -15,10 +15,9 @@ const Login = () => {
 
     getUser(username)
       .then((data) => {
-        setUser({});
-        setUser(data);
         setIsLoggedIn(true);
         setErrorMessage('');
+        setUser(data);
       })
       .catch((error) => {
         setIsError(true);

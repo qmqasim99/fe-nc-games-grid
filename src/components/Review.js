@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 import { Link, useParams } from 'react-router-dom';
 import { getReview } from '../utils/api';
 import { convertApiDate, getApiDate } from '../utils/dates';
@@ -15,6 +16,7 @@ const Review = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,13 +28,13 @@ const Review = () => {
       })
       .catch((error) => {
         setIsError(true);
-        setErrorMessage(error.response.data.msg);
         setIsLoading(true);
+        setErrorMessage(error.response.data.msg);
       });
   }, [review_id]);
 
   return (
-    <main>
+    <main id="contents">
       {isError ? (
         <>
           <ErrorMessage msg={errorMessage} />
@@ -81,7 +83,7 @@ const Review = () => {
             </div>
             <p></p>
             <h3>Comment Count: {review.comment_count}</h3>
-            <Comments review_id={review.review_id} />
+            <Comments review_id={review_id} />
           </div>
         </>
       )}

@@ -6,7 +6,7 @@ const RequireLogin = () => {
   const { user, logout, isLoggedIn } = useContext(UserContext);
 
   return user.username ? (
-    <div className="user-logged-section ">
+    <div className="user-logged-section">
       <p>
         Hello, {user.username}{' '}
         <button className="red-button " onClick={logout}>
