@@ -7,7 +7,7 @@ This app also allows users to vote on the Reviews and Comments and allows them t
 
 This App is developed using React.js, Axios and REST APIs provided by Northcoders
 
-A live version of the App is available here [FE-NC-Games](https://qm-fe-nc-games.netlify.app).
+A live version of the App is available here [FE-NC-Games](https://fe-nc-games-grid.vercel.app/).
 
 ## Running this code
 
